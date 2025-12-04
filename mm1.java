@@ -94,7 +94,40 @@ public class mm1 {
                     L = lamda * W;
                     System.out.println("Numero promedio en el sistema: " + L);
                 }
-                
+                case 3 -> {
+                    //mm1k
+                    // pid iendo datos
+                    System.out.println("Ingrese el valor de mu: ");//la vaca mu la vaca mu la vaca la mima vaca mu
+                    double mu = ingresarDatos.nextInt();
+                    System.out.println("Ingrese el valor de lamda: ");
+                    double lamda = ingresarDatos.nextInt();
+                    System.out.println("Ingrese el valor de k:");
+                    double k = ingresarDatos.nextDouble();
+                    // utilizaion de sistema p
+                    double p;
+                    p = (lamda / mu);
+                    System.out.println("La utilizacion del sistema es: " + p);
+                    //paso 2 propabiliad de que haya 0 personas (p0)
+                    double p0;
+                    p0 = (1-p)/(1 - (Math.pow(p, k+1)));
+                    System.out.println("La probaiblidad de que haya 0 personas es : " + p0);
+                    //paso 3 probabilidad de rechazo (pk)
+                    double pk;
+                    pk = (Math.pow(p, k)*p0);
+                    System.out.println("Probabilidad de rechazo es : " + pk);
+                    //paso 4 taza efectiva de llegadas (lamda e)
+                    double tazallegada;
+                    tazallegada = lamda * (1-pk);
+                    System.out.println("La taza efectiva de llegada es: " + tazallegada);
+                    //paso 5 longitud promedio de cola L
+                    double L;
+                    L = p * (1 - (k + 1) * Math.pow(p, k) + k * Math.pow(p, k +1 ))/((1 - p) * (1 - (Math.pow(p, k + 1))));
+                    System.out.println("Resultado de L: " + L);
+                    //paso 6 tiempo en el sistema W
+                    double W;
+                    W = L / tazallegada;
+                    System.out.println("W: " + W);
+                }
             }
         } while (opcion != 4);
 
